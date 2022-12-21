@@ -34,12 +34,12 @@ use <profiles.scad>
 $fn = 32; // Mostly only applies to legends/fonts but increase as needed for greater resolution
 
 // Pick what you want to render (you can put a '%' in front of the name to make it transparent)
-// RENDER = ["keycap", "stem"]; // Supported values: keycap, stem, legends, row, row_stems, row_legends, custom
+RENDER = ["keycap", "stem"]; // Supported values: keycap, stem, legends, row, row_stems, row_legends, custom
 //RENDER = ["%keycap", "stem"]; // Can be useful for visualizing the stem inside the keycap
 RENDER = ["keycap"];
-//RENDER = ["legends"];
 //RENDER = ["legends", "stem"];
-// RENDER = ["stem"];
+//RENDER = ["stem"];
+//RENDER = ["legends"];
 //RENDER = ["underset_mask"]; // A thin layer under the top of they keycap meant to be darkened for underset legends
 // Want to render a whole row of keycaps/stems/legends at a time?  You can do that here:
 //RENDER = ["row", "row_stems"]; // For making whole keyboards at a time (with whole-keyboard inlaid art!)
@@ -87,7 +87,7 @@ DISH_TYPE = "cylinder"; // "inv_pyramid", "cylinder", "sphere" (aka "domed"), an
 // NOTE: inv_pyramid doesn't work for making spacbars (kinda, "duh")
 DISH_DEPTH = 2; // Distance between the top sides and the bottommost point in the dish (set to 0 for flat top)
 // NOTE: When DISH_INVERT is true DISH_DEPTH becomes more like, "how far dish protrudes upwards"
-DISH_THICKNESS = 5; // 0.6; // Amount of material that will be placed under the bottommost part of the dish (Note: only used if UNIFORM_WALL_THICKNESS is false)
+DISH_THICKNESS = 4; // 0.6; // Amount of material that will be placed under the bottommost part of the dish (Note: only used if UNIFORM_WALL_THICKNESS is false)
 // NOTE: If you make DISH_THICKNESS too small legends might not print properly--even with a tiny nozzle.  In other words, a thick keycap top makes for nice clean (3D printed) legends.
 // NOTE: Also, if you're printing white keycaps with transparent legends you want a thick dish (1.2+) to darken the non-transparent parts of the keycap
 DISH_TILT = 10; // How to rotate() the dish of the key (on the Y axis)
@@ -118,7 +118,7 @@ STEM_TYPE = "box_cherry"; // "box_cherry" (default), "round_cherry" (harder to p
 STEM_HOLLOW = false; // Only applies to Alps: Whether or not the inside is hollow
 STEM_HEIGHT = 4; // How far into the keycap's stem the switch's stem can go (4 is "normal keycap")
 // NOTE: For Alps you typically want STEM_HEIGHT=3.5 (slightly shorter)
-STEM_TOP_THICKNESS = 0.5; // The part that resides under the keycap, connecting stems and keycap together (Note: Only used if UNIFORM_WALL_THICKNESS is false)
+STEM_TOP_THICKNESS = 0.65; // The part that resides under the keycap, connecting stems and keycap together (Note: Only used if UNIFORM_WALL_THICKNESS is false)
 // TIP: Increase STEM_TOP_THICKNESS when generating underset masks; makes them easier to use as a modifier in your slicer.
 STEM_INSIDE_TOLERANCE = 0.18; // Increases the size of the empty space(s) in the stem
 // NOTE: For Alps stems I recommend reducing these two values to something like 0.1 or 0.05:
@@ -135,7 +135,7 @@ STEM_INSET = 0; // How far to inset the stem (set to 0 to have the stem rest on 
 STEM_FLAT_SUPPORT = false; // Add built-in support for the stem when printing flat (if inset)
 STEM_SIDE_SUPPORT_THICKNESS = 1; // 1 works well for most things
 // This controls which sides get (internal, under-the-top) stem supports (for printing on the side):
-STEM_SIDE_SUPPORTS = [0,0,0,0]; // Left, right, front, back
+STEM_SIDE_SUPPORTS = [0,1,0,0]; // Left, right, front, back
 // NOTE: You can only enable left/right supports *or* front/back supports.  Not both at the same time. (TODO: Fix that...  Maybe?  Why would you ever need *both* say, a left support *and* a top support at the same time?)
 STEM_SUPPORT_DISTANCE = 0.2; // Controls the air gap between the stem and its support
 // NOTE: If printing with a small nozzle like 0.25mm you might want to set the support distance to 0 to prevent "misses".
